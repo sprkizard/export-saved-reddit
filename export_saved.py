@@ -30,7 +30,7 @@ class Converter():
 
     def parse_urls(self):
         """Parse the file and returns a folder ordered list."""
-        efile = open(self._file)
+        efile = open(self._file, encoding='utf-8')
         urls = csv.reader(efile, dialect='excel')
         parsed_urls = {}
         next(urls)
@@ -239,7 +239,7 @@ def write_csv(csv_rows, file_name=None):
 
     # write csv using csv module
     try:
-        with open(file_name, "wb") as f:
+        with open(file_name, "w", newline="", encoding='utf-8') as f:
             csvwriter = csv.writer(f, delimiter=delimiter, quoting=csv.QUOTE_MINIMAL)
             csvwriter.writerow(csv_fields)
             for row in csv_rows:
